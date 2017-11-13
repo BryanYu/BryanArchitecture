@@ -1,4 +1,5 @@
 ﻿using Bryan.Architecture.DomainModel.Base;
+using Bryan.Architecture.DomainModel.User;
 
 namespace Bryan.Architecture.BusinessLogic.Interface
 {
@@ -9,6 +10,6 @@ namespace Bryan.Architecture.BusinessLogic.Interface
         /// <param name="account">The account.</param>
         /// <param name="password">The password.</param>
         /// <returns>The <see cref="ExecuteResult{T}"/>object</returns>
-        ExecuteResult<object> Login(string account, string password);
+        ExecuteResult<string> Login(string account, string password);
     }
 }

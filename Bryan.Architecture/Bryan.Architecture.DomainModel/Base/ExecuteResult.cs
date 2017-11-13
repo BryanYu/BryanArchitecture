@@ -1,5 +1,4 @@
 ﻿using Bryan.Architecture.DomainModel.Base.Enum;
-using System.Net;
 
 namespace Bryan.Architecture.DomainModel.Base
 {

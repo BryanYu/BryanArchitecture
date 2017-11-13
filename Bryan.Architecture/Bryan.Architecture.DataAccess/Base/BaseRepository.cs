@@ -42,7 +42,7 @@ namespace Bryan.Architecture.DataAccess.Base
         /// <param name="id">The id.</param>
         public void Delete(int id)
         {
-            var entity = this.Get(id);
+            var entity = this._context.Set<TEntity>().Find(id);
             this._context.Set<TEntity>().Remove(entity);
             this._context.SaveChanges();
         }
@@ -67,11 +67,11 @@ namespace Bryan.Architecture.DataAccess.Base
         public IQueryable<TEntity> ListAll(Expression<Func<TEntity, bool>> predicate = null)
         {
             var result = this._context.Set<TEntity>().AsQueryable();
-
             if (predicate != null)
             {
                 result = result.Where(predicate);
             }
+
             return result;
         }
 

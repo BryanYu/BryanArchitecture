@@ -52,6 +52,7 @@
     <Compile Include="Enum\ExcuteResultStatus.cs" />
     <Compile Include="Base\ExecuteResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\LoginResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

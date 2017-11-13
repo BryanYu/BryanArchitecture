@@ -55,6 +55,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Bryan.Architecture.DataAccess\Bryan.Architecture.DataAccess.csproj">
+      <Project>{349D05EE-23C4-45AF-907B-8244AEE0C88C}</Project>
+      <Name>Bryan.Architecture.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bryan.Architecture.DomainModel\Bryan.Architecture.DomainModel.csproj">
       <Project>{1065B820-042D-4751-BC13-8ABAC88D7A24}</Project>
       <Name>Bryan.Architecture.DomainModel</Name>
