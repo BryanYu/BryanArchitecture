@@ -31,7 +31,8 @@ namespace Bryan.Architecture.BusinessLogic.Implement
         /// <returns>The <see cref="ExecuteResult{T}"/>.</returns>
         public ExecuteResult<string> Login(string account, string password)
         {
-            return new ExecuteResult<string> { Data = "Token" };
+            var result = this._userRepository.Get(1);
+            return new ExecuteResult<string> { Data = result.Account };
         }
     }
 }

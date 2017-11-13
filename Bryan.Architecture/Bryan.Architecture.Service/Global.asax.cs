@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
+using Bryan.Architecture.Service.App_Start;
 
 namespace Bryan.Architecture.Service
 {
@@ -18,6 +19,7 @@ namespace Bryan.Architecture.Service
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            AutofacConfig.Register();
         }
     }
 }

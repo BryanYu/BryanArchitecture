@@ -282,3 +282,4 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 /Bryan.Architecture/Bryan.Architecture.Service/Web.config
+/Bryan.Architecture/Bryan.Architecture.Service/App_Data/Bryan.Architecture.Service.xml

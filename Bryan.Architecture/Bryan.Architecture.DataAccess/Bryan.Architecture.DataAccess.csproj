@@ -107,13 +107,6 @@
       <DependentUpon>BryanArchitecture.edmx</DependentUpon>
       <LastGenOutput>BryanArchitecture.cs</LastGenOutput>
     </Content>
-    <Content Include="DataBase\BryanArchitecuture.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DataBase\BryanArchitecuture_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>BryanArchitecuture.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
