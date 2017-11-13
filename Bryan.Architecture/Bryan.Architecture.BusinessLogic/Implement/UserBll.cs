@@ -8,6 +8,7 @@ using Bryan.Architecture.BusinessLogic.Interface;
 using Bryan.Architecture.DataAccess;
 using Bryan.Architecture.DataAccess.Base;
 using Bryan.Architecture.DomainModel.Base;
+using Bryan.Architecture.DomainModel.Base.Enum;
 using Bryan.Architecture.DomainModel.User;
 
 namespace Bryan.Architecture.BusinessLogic.Implement
@@ -31,8 +32,14 @@ namespace Bryan.Architecture.BusinessLogic.Implement
         /// <returns>The <see cref="ExecuteResult{T}"/>.</returns>
         public ExecuteResult<string> Login(string account, string password)
         {
-            var result = this._userRepository.Get(1);
-            return new ExecuteResult<string> { Data = result.Account };
+            var user = this._userRepository.Get(item => item.Account == account && item.Password == password);
+            if (user != null)
+            {
+                var token = string.Empty;
+                return new ExecuteResult<string> { Status = ExcuteResultStatus.UserNotFound, Data = token };
+            }
+
+            return new ExecuteResult<string>() { Status = ExcuteResultStatus.Success };
         }
     }
 }

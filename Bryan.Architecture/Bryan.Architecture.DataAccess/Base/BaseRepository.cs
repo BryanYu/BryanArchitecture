@@ -61,10 +61,13 @@ namespace Bryan.Architecture.DataAccess.Base
             this.SaveChanges();
         }
 
-        /// <summary>The list all.</summary>
+        /// <summary>The list.</summary>
+        /// <param name="selector">The selector.</param>
         /// <param name="predicate">The predicate.</param>
+        /// <typeparam name="TResult">TResult</typeparam>
         /// <returns>The <see cref="IQueryable"/>.</returns>
-        public IQueryable<TEntity> ListAll(Expression<Func<TEntity, bool>> predicate = null)
+        public IQueryable<TResult> List<TResult>(Expression<Func<TEntity, TResult>> selector,
+                                                 Expression<Func<TEntity, bool>> predicate = null)
         {
             var result = this._context.Set<TEntity>().AsQueryable();
             if (predicate != null)
@@ -72,7 +75,7 @@ namespace Bryan.Architecture.DataAccess.Base
                 result = result.Where(predicate);
             }
 
-            return result;
+            return result.Select(selector);
         }
 
         /// <summary>The get.</summary>
@@ -81,6 +84,32 @@ namespace Bryan.Architecture.DataAccess.Base
         public TEntity Get(int id)
         {
             var result = this._context.Set<TEntity>().Find(id);
+            return result;
+        }
+
+        /// <summary>The get.</summary>
+        /// <param name="predicate">The predicate.</param>
+        /// <param name="selector">The selector.</param>
+        /// <typeparam name="TResult">TResult</typeparam>
+        /// <returns>The <see cref="TResult"/>.</returns>
+        public TResult Get<TResult>(Expression<Func<TEntity, bool>> predicate,
+                                    Expression<Func<TEntity, TResult>> selector)
+        {
+            var result = this._context.Set<TEntity>()
+                .Where(predicate)
+                .Select(selector)
+                .FirstOrDefault();
+            return result;
+        }
+
+        /// <summary>The get.</summary>
+        /// <param name="predicate">The predicate.</param>
+        /// <returns>The <see cref="TEntity"/>.</returns>
+        public TEntity Get(Expression<Func<TEntity, bool>> predicate)
+        {
+            var result = this._context.Set<TEntity>()
+                             .Where(predicate)
+                             .FirstOrDefault();
             return result;
         }
     }
