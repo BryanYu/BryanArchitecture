@@ -7,8 +7,14 @@ using Swashbuckle.Application;
 
 namespace Bryan.Architecture.Service
 {
+    /// <summary>
+    /// SwaggerConfig
+    /// </summary>
     public class SwaggerConfig
     {
+        /// <summary>
+        /// Register
+        /// </summary>
         public static void Register()
         {
             var thisAssembly = typeof(SwaggerConfig).Assembly;

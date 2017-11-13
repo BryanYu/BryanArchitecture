@@ -281,3 +281,4 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+/Bryan.Architecture/Bryan.Architecture.Service/Web.config
