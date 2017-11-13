@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bryan.Architecture.Web", "Bryan.Architecture.Web\Bryan.Architecture.Web.csproj", "{FC7540A7-5F80-4D22-A20A-4EE4DAFC6779}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pesentation", "Pesentation", "{2831A970-1331-4EE2-A88F-E046647B244C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{1E188915-F18E-410F-B3D0-626EFFC369E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{A248510C-27FB-4D5A-98A9-79DA09E7F003}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{D4210AA3-88F2-409D-88CD-DC1396842560}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{AA1FEC8C-7D1D-47DF-AF38-0880FE36A998}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{519A377C-6DC7-4387-B8D8-A19F8FB58FE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bryan.Architecture.Service", "Bryan.Architecture.Service\Bryan.Architecture.Service.csproj", "{B89B071E-D8E5-4A21-A6E4-A6D5F77C2AC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bryan.Architecture.Utility", "Bryan.Architecture.Utility\Bryan.Architecture.Utility.csproj", "{B4EB8C6B-E306-4774-86C1-52EA2091D5A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bryan.Architecture.DataAccess", "Bryan.Architecture.DataAccess\Bryan.Architecture.DataAccess.csproj", "{349D05EE-23C4-45AF-907B-8244AEE0C88C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bryan.Architecture.BusinessLogic", "Bryan.Architecture.BusinessLogic\Bryan.Architecture.BusinessLogic.csproj", "{69983926-E8DE-4C88-9934-523618226A3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bryan.Architecture.DomainModel", "Bryan.Architecture.DomainModel\Bryan.Architecture.DomainModel.csproj", "{1065B820-042D-4751-BC13-8ABAC88D7A24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC7540A7-5F80-4D22-A20A-4EE4DAFC6779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC7540A7-5F80-4D22-A20A-4EE4DAFC6779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC7540A7-5F80-4D22-A20A-4EE4DAFC6779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC7540A7-5F80-4D22-A20A-4EE4DAFC6779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B89B071E-D8E5-4A21-A6E4-A6D5F77C2AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B89B071E-D8E5-4A21-A6E4-A6D5F77C2AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B89B071E-D8E5-4A21-A6E4-A6D5F77C2AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B89B071E-D8E5-4A21-A6E4-A6D5F77C2AC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4EB8C6B-E306-4774-86C1-52EA2091D5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4EB8C6B-E306-4774-86C1-52EA2091D5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4EB8C6B-E306-4774-86C1-52EA2091D5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4EB8C6B-E306-4774-86C1-52EA2091D5A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{349D05EE-23C4-45AF-907B-8244AEE0C88C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{349D05EE-23C4-45AF-907B-8244AEE0C88C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{349D05EE-23C4-45AF-907B-8244AEE0C88C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{349D05EE-23C4-45AF-907B-8244AEE0C88C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69983926-E8DE-4C88-9934-523618226A3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69983926-E8DE-4C88-9934-523618226A3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69983926-E8DE-4C88-9934-523618226A3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69983926-E8DE-4C88-9934-523618226A3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1065B820-042D-4751-BC13-8ABAC88D7A24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1065B820-042D-4751-BC13-8ABAC88D7A24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1065B820-042D-4751-BC13-8ABAC88D7A24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1065B820-042D-4751-BC13-8ABAC88D7A24}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FC7540A7-5F80-4D22-A20A-4EE4DAFC6779} = {2831A970-1331-4EE2-A88F-E046647B244C}
+		{B89B071E-D8E5-4A21-A6E4-A6D5F77C2AC5} = {519A377C-6DC7-4387-B8D8-A19F8FB58FE7}
+		{B4EB8C6B-E306-4774-86C1-52EA2091D5A0} = {A248510C-27FB-4D5A-98A9-79DA09E7F003}
+		{349D05EE-23C4-45AF-907B-8244AEE0C88C} = {AA1FEC8C-7D1D-47DF-AF38-0880FE36A998}
+		{69983926-E8DE-4C88-9934-523618226A3D} = {D4210AA3-88F2-409D-88CD-DC1396842560}
+		{1065B820-042D-4751-BC13-8ABAC88D7A24} = {A248510C-27FB-4D5A-98A9-79DA09E7F003}
+	EndGlobalSection
+EndGlobal
