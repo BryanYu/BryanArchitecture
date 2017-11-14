@@ -10,6 +10,7 @@ using Bryan.Architecture.DataAccess.Base;
 using Bryan.Architecture.DomainModel.Base;
 using Bryan.Architecture.DomainModel.Base.Enum;
 using Bryan.Architecture.DomainModel.User;
+using Bryan.Architecture.Utility.Cryptography;
 
 namespace Bryan.Architecture.BusinessLogic.Implement
 {
@@ -32,6 +33,7 @@ namespace Bryan.Architecture.BusinessLogic.Implement
         /// <returns>The <see cref="ExecuteResult{T}"/>.</returns>
         public ExecuteResult<string> Login(string account, string password)
         {
+            var hashPassword = Md5.GetHash(password);
             var user = this._userRepository.Get(item => item.Account == account && item.Password == password);
             if (user != null)
             {

@@ -259,6 +259,10 @@ namespace Bryan.Architecture.Service
                     });
         }
 
+        /// <summary>
+        /// GetXmlCommentsPath
+        /// </summary>
+        /// <returns>string</returns>
         private static string GetXmlCommentsPath()
         {
             return $"{AppDomain.CurrentDomain.BaseDirectory}\\App_Data\\Bryan.Architecture.Service.xml";

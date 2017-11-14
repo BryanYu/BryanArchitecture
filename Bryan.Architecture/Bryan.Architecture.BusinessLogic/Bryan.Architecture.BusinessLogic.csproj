@@ -63,6 +63,10 @@
       <Project>{1065B820-042D-4751-BC13-8ABAC88D7A24}</Project>
       <Name>Bryan.Architecture.DomainModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bryan.Architecture.Utility\Bryan.Architecture.Utility.csproj">
+      <Project>{B4EB8C6B-E306-4774-86C1-52EA2091D5A0}</Project>
+      <Name>Bryan.Architecture.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
