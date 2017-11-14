@@ -38,6 +38,7 @@ namespace Bryan.Architecture.BusinessLogic.Implement
                 var token = JwtToken.Generate(Settings.Default.Secret, user);
                 return new ExecuteResult<string> { Status = ExcuteResultStatus.Success, Data = token };
             }
+
             return new ExecuteResult<string>() { Status = ExcuteResultStatus.UserNotFound };
         }
     }
