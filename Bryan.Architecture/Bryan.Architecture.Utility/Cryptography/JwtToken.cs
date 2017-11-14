@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using JWT;
 using JWT.Algorithms;
 using JWT.Serializers;
+using Newtonsoft.Json;
 
 namespace Bryan.Architecture.Utility.Cryptography
 {
@@ -21,7 +22,7 @@ namespace Bryan.Architecture.Utility.Cryptography
         public static string Generate<TData>(string secret, TData data = null) where TData : class
         {
             IJwtAlgorithm algorithm = new HMACSHA256Algorithm();
-            IJsonSerializer serializer = new JsonNetSerializer();
+            IJsonSerializer serializer = new NewJsonNetSerialzer();
             IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
             IJwtEncoder encoder = new JwtEncoder(algorithm, serializer, urlEncoder);
             var token = encoder.Encode(data, secret);
@@ -35,21 +36,33 @@ namespace Bryan.Architecture.Utility.Cryptography
         /// <returns>The <see cref="TData"/>.</returns>
         public static TData Decode<TData>(string secret, string token)
         {
-            try
+            IJsonSerializer serializer = new NewJsonNetSerialzer();
+            IDateTimeProvider provider = new UtcDateTimeProvider();
+            IJwtValidator validator = new JwtValidator(serializer, provider);
+            IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
+            IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder);
+            var result = decoder.DecodeToObject<TData>(token, secret, true);
+            return result;
+        }
+
+        /// <summary>The new json net serialzer.</summary>
+        private class NewJsonNetSerialzer : IJsonSerializer
+        {
+            /// <summary>The deserialize.</summary>
+            /// <param name="json">The json.</param>
+            /// <typeparam name="T">T</typeparam>
+            /// <returns>The <see cref="T"/>.</returns>
+            public T Deserialize<T>(string json)
             {
-                IJsonSerializer serializer = new JsonNetSerializer();
-                IDateTimeProvider provider = new UtcDateTimeProvider();
-                IJwtValidator validator = new JwtValidator(serializer, provider);
-                IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
-                IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder);
-                var json = decoder.Decode(token, secret, true);
-                var result = serializer.Deserialize<TData>(json);
-                return result;
+                return JsonConvert.DeserializeObject<T>(json);
             }
-            catch (Exception e)
+
+            /// <summary>The serialize.</summary>
+            /// <param name="obj">The obj.</param>
+            /// <returns>The <see cref="string"/>.</returns>
+            public string Serialize(object obj)
             {
-                Console.WriteLine(e);
-                throw;
+                return JsonConvert.SerializeObject(obj);
             }
         }
     }

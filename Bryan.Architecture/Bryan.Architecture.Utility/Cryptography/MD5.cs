@@ -21,7 +21,7 @@ namespace Bryan.Architecture.Utility.Cryptography
                 StringBuilder sb = new StringBuilder();
                 foreach (var data in datas)
                 {
-                    sb.Append(data);
+                    sb.Append(data.ToString("x2"));
                 }
 
                 return sb.ToString();

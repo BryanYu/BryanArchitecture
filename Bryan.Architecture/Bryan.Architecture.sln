@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bryan.Architecture.Business
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{CB3EECBD-304B-4442-BC9B-39A525F2DF28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bryan.Architecture.Utility.UnitTests", "Bryan.Architecture.Utility.UnitTests\Bryan.Architecture.Utility.UnitTests.csproj", "{B10B65F7-C1B1-4E0F-A061-F84D597C2288}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,6 +82,12 @@ Global
 		{83F8C358-8295-4409-BB4D-7F919C05524D}.Dev|Any CPU.Build.0 = Dev|Any CPU
 		{83F8C358-8295-4409-BB4D-7F919C05524D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83F8C358-8295-4409-BB4D-7F919C05524D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B10B65F7-C1B1-4E0F-A061-F84D597C2288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B10B65F7-C1B1-4E0F-A061-F84D597C2288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B10B65F7-C1B1-4E0F-A061-F84D597C2288}.Dev|Any CPU.ActiveCfg = Debug|Any CPU
+		{B10B65F7-C1B1-4E0F-A061-F84D597C2288}.Dev|Any CPU.Build.0 = Debug|Any CPU
+		{B10B65F7-C1B1-4E0F-A061-F84D597C2288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B10B65F7-C1B1-4E0F-A061-F84D597C2288}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,5 +101,6 @@ Global
 		{1065B820-042D-4751-BC13-8ABAC88D7A24} = {A248510C-27FB-4D5A-98A9-79DA09E7F003}
 		{83F8C358-8295-4409-BB4D-7F919C05524D} = {CB3EECBD-304B-4442-BC9B-39A525F2DF28}
 		{CB3EECBD-304B-4442-BC9B-39A525F2DF28} = {1E188915-F18E-410F-B3D0-626EFFC369E3}
+		{B10B65F7-C1B1-4E0F-A061-F84D597C2288} = {CB3EECBD-304B-4442-BC9B-39A525F2DF28}
 	EndGlobalSection
 EndGlobal

@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Bryan.Architecture.BusinessLogic.Interface;
+using Bryan.Architecture.BusinessLogic.Properties;
 using Bryan.Architecture.DataAccess;
 using Bryan.Architecture.DataAccess.Base;
 using Bryan.Architecture.DomainModel.Base;
@@ -37,11 +35,10 @@ namespace Bryan.Architecture.BusinessLogic.Implement
             var user = this._userRepository.Get(item => item.Account == account && item.Password == hashPassword);
             if (user != null)
             {
-                var token = string.Empty;
-                return new ExecuteResult<string> { Status = ExcuteResultStatus.UserNotFound, Data = token };
+                var token = JwtToken.Generate(Settings.Default.Secret, user);
+                return new ExecuteResult<string> { Status = ExcuteResultStatus.Success, Data = token };
             }
-
-            return new ExecuteResult<string>() { Status = ExcuteResultStatus.Success };
+            return new ExecuteResult<string>() { Status = ExcuteResultStatus.UserNotFound };
         }
     }
 }
