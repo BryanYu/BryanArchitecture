@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,7 +10,6 @@ using Bryan.Architecture.DataAccess;
 using Bryan.Architecture.DataAccess.Base;
 using Bryan.Architecture.DomainModel.Base;
 using Bryan.Architecture.DomainModel.Base.Enum;
-using Bryan.Architecture.DomainModel.User;
 using Bryan.Architecture.Utility.Cryptography;
 
 namespace Bryan.Architecture.BusinessLogic.Implement
@@ -34,7 +34,7 @@ namespace Bryan.Architecture.BusinessLogic.Implement
         public ExecuteResult<string> Login(string account, string password)
         {
             var hashPassword = Md5.GetHash(password);
-            var user = this._userRepository.Get(item => item.Account == account && item.Password == password);
+            var user = this._userRepository.Get(item => item.Account == account && item.Password == hashPassword);
             if (user != null)
             {
                 var token = string.Empty;

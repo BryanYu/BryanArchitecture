@@ -1,5 +1,4 @@
 ﻿using Bryan.Architecture.DomainModel.Base;
-using Bryan.Architecture.DomainModel.User;
 
 namespace Bryan.Architecture.BusinessLogic.Interface
 {
