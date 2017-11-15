@@ -2,7 +2,7 @@
 using Bryan.Architecture.Utility.Cryptography;
 using NUnit.Framework;
 
-namespace Bryan.Architecture.Utility.UnitTests
+namespace Bryan.Architecture.Utility.Cyptography.UnitTests
 {
     /// <summary>The md 5 tests.</summary>
     [TestFixture]

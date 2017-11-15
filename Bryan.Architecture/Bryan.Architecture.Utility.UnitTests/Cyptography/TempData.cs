@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bryan.Architecture.Utility.UnitTests
+namespace Bryan.Architecture.Utility.Cyptography.UnitTests
 {
     /// <summary>The temp data.</summary>
     public class TempData

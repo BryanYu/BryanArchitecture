@@ -2,28 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-
 using Bryan.Architecture.BusinessLogic.Implement;
 using Bryan.Architecture.BusinessLogic.Interface;
 using Bryan.Architecture.DataAccess.Base;
 using Bryan.Architecture.DomainModel.Base;
 using Bryan.Architecture.DomainModel.Base.Enum;
 using Bryan.Architecture.DomainModel.Dto.User;
-
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
-
 using NSubstitute;
-
 using NUnit.Framework;
 using System.Linq.Expressions;
 
 namespace Bryan.Architecture.BusinessLogic.Tests.User
 {
+    /// <summary>The user tests.</summary>
     [TestFixture]
     [Category("Bunsiness UserBll")]
     public class UserTests
     {
+        /// <summary>The when_ user_ input_ account_ and_ password_ return_ token.</summary>
         [Test]
         public void When_User_Input_Account_And_Password_Return_Token()
         {

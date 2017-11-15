@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 using Bryan.Architecture.Utility.Cryptography;
 using ExpectedObjects;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 
-namespace Bryan.Architecture.Utility.UnitTests
+namespace Bryan.Architecture.Utility.Cyptography.UnitTests
 {
     /// <summary>The jwt token tests.</summary>
     [TestFixture]
