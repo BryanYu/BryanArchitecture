@@ -4,14 +4,32 @@
 
 以開發一個後台管理系統為目標 實作自己的架構
 
-功能：
-* 權限管理功能
-* 基本CRUD
-* 登入/登出
+-------------------------------
+
+# 專案分層：
+## BusinessLogic
+用途：實現商業邏輯
+
+## DataAccess
+用途：實現商業邏輯
+
+## Infrastructure
+用途：所有專案的共用工具及程式服務實作
+
+## Presentation
+用途：所有End-User接觸的介面專案(例如：Web、Console、WinForm...等)
+
+## Service
+用途：開放BusinessLogic成為API，給各種Presentation使用
+
+## Test
+用途：單元測試、整合測試專案
 
 
-程式服務：
-# Logging：
+
+# 程式服務：
+
+## Logging：
 
 | Log分級 	| 用途 	                                     | 使用組態 | 儲存位置 |
 |-------- 	|------	                                    |----------|----------	|
@@ -22,14 +40,23 @@
 | Error    	| 應用程式錯誤，或有例外狀況                   | Debug、Dev、Prod | File、Email、Console |
 | Fatal    	| 應用程式損壞      	                        | Debug、Dev、Prod | File、Email、Console |
 
+## Email：
 
+## Cache：
 
-* Email
-* Cache 
-
-預計會使用的技術棧：
-* 前端：Vue.js、TypeScript、Boostrap
-* 後端：.NET Web API、 LINQ Entity Framework
-* 資料庫：MS SQL Server
+# 預計會使用的技術棧：
+## 前端：
+* Vue.js
+* TypeScript
+* Boostrap
+## 後端：
+* .NET Web API
+* LINQ
+* Entity Framework
+## 資料庫：
+* MS SQL Server
 
 Comming Soon!
+
+
+
