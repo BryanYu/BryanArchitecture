@@ -6,23 +6,12 @@
 
 
 # 專案分層：
-### BusinessLogic 
-用途：實現商業邏輯
-
-### DataAccess
-用途：實現商業邏輯
-
-### Infrastructure
-用途：所有專案的共用工具及程式服務實作
-
-### Presentation
-用途：所有End-User接觸的介面專案(例如：Web、Console、WinForm...等)
-
-### Service
-用途：開放BusinessLogic成為API，給各種Presentation使用
-
-### Test
-用途：單元測試、整合測試專案
+* ### BusinessLogic：實現商業邏輯
+* ### DataAccess：實現資料存取
+* ### Infrastructure：所有專案的共用工具及程式服務實作
+* ### Presentation：所有End-User接觸的介面專案(例如：Web、Console、WinForm...等)
+* ### Service：開放BusinessLogic成為API，給各種Presentation使用
+* ### Test：單元測試、整合測試專案
 
 ### 程式服務：
 
