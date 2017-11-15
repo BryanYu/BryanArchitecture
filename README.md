@@ -4,6 +4,7 @@
 
 以開發一個後台管理系統為目標 實作自己的架構
 
+* * *
 
 # 專案分層：
 * ### BusinessLogic：實現商業邏輯
@@ -13,9 +14,11 @@
 * ### Service：開放BusinessLogic成為API，給各種Presentation使用
 * ### Test：單元測試、整合測試專案
 
-### 程式服務：
+* * *
 
-#### Logging：
+# 程式服務：
+
+### Logging：
 
 | Log分級 	| 用途 	                                     | 使用組態 | 儲存位置 |
 |-------- 	|------	                                    |----------|----------	|
@@ -26,9 +29,11 @@
 | Error    	| 應用程式錯誤，或有例外狀況                   | Debug、Dev、Prod | File、Email、Console |
 | Fatal    	| 應用程式損壞      	                        | Debug、Dev、Prod | File、Email、Console |
 
-#### Email：
+### Email：
 
-#### Cache：
+### Cache：
+
+* * *
 
 # 預計會使用的技術棧：
 ### 前端：
