@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dto\User\LoginDTO.cs" />
+    <Compile Include="Dto\User\LoginDto.cs" />
     <Compile Include="Enum\ExcuteResultStatus.cs" />
     <Compile Include="Base\ExecuteResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
