@@ -1,13 +1,12 @@
-# Architecture
+# BryanArchitecture
 
 自己製作的.NET Web開發架構
 
 以開發一個後台管理系統為目標 實作自己的架構
 
--------------------------------
 
 # 專案分層：
-## BusinessLogic
+## BusinessLogic 
 用途：實現商業邏輯
 
 ## DataAccess
@@ -24,8 +23,6 @@
 
 ## Test
 用途：單元測試、整合測試專案
-
-
 
 # 程式服務：
 
