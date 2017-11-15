@@ -9,8 +9,21 @@
 * 基本CRUD
 * 登入/登出
 
+
 程式服務：
-* Logging
+# Logging：
+
+| Log分級 	| 用途 	                                     | 使用組態 | 儲存位置 |
+|-------- 	|------	                                    |----------|----------	|
+| Trace   	| 追蹤Method執行過程                         | Debug、Dev | File、Console |
+| Debug   	| 執行查詢、身分認證、認證延長...等操作     	  | Debug、Dev | File、Console |
+| Info    	| 一般操作，如寄mail、更新資料      	        | Debug、Dev | File、Console |
+| Warn    	| 錯誤操作，但程式可以執行，例如：驗證資料      | Debug、Dev、Prod | File、Console |
+| Error    	| 應用程式錯誤，或有例外狀況                   | Debug、Dev、Prod | File、Email、Console |
+| Fatal    	| 應用程式損壞      	                        | Debug、Dev、Prod | File、Email、Console |
+
+
+
 * Email
 * Cache 
 
