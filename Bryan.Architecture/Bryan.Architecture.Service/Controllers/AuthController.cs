@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Bryan.Architecture.BusinessLogic.Interface;
+using Bryan.Architecture.DomainModel.Dto.User;
 
 namespace Bryan.Architecture.Service.Controllers
 {
@@ -24,12 +25,11 @@ namespace Bryan.Architecture.Service.Controllers
         }
 
         /// <summary>The login.</summary>
-        /// <param name="account">The account.</param>
-        /// <param name="password">The password.</param>
+        /// <param name="dto">The dto.</param>
         /// <returns>The <see cref="IHttpActionResult"/>.</returns>
-        public IHttpActionResult Login(string account, string password)
+        public IHttpActionResult Login(LoginDto dto)
         {
-            var result = this._userBll.Login(account, password);
+            var result = this._userBll.Login(dto);
             return this.Ok(result);
         }
     }

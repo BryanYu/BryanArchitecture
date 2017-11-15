@@ -1,4 +1,5 @@
 ﻿using Bryan.Architecture.DomainModel.Base;
+using Bryan.Architecture.DomainModel.Dto.User;
 
 namespace Bryan.Architecture.BusinessLogic.Interface
 {
@@ -6,9 +7,8 @@ namespace Bryan.Architecture.BusinessLogic.Interface
     public interface IUserBll
     {
         /// <summary>The login.</summary>
-        /// <param name="account">The account.</param>
-        /// <param name="password">The password.</param>
-        /// <returns>The <see cref="ExecuteResult{T}"/>object</returns>
-        ExecuteResult<string> Login(string account, string password);
+        /// <param name="dto">The dto.</param>
+        /// <returns>The <see cref="ExecuteResult{T}"/>.</returns>
+        ExecuteResult<string> Login(LoginDto dto);
     }
 }

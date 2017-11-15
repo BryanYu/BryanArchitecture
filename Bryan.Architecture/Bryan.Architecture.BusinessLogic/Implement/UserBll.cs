@@ -8,6 +8,7 @@ using Bryan.Architecture.DataAccess;
 using Bryan.Architecture.DataAccess.Base;
 using Bryan.Architecture.DomainModel.Base;
 using Bryan.Architecture.DomainModel.Base.Enum;
+using Bryan.Architecture.DomainModel.Dto.User;
 using Bryan.Architecture.Utility.Cryptography;
 
 namespace Bryan.Architecture.BusinessLogic.Implement
@@ -16,7 +17,7 @@ namespace Bryan.Architecture.BusinessLogic.Implement
     public class UserBll : IUserBll
     {
         /// <summary>The _user repository.</summary>
-        private IRepository<User> _userRepository;
+        private readonly IRepository<User> _userRepository;
 
         /// <summary>Initializes a new instance of the <see cref="UserBll"/> class.</summary>
         /// <param name="userRepository">The user repository.</param>
@@ -26,13 +27,12 @@ namespace Bryan.Architecture.BusinessLogic.Implement
         }
 
         /// <summary>The login.</summary>
-        /// <param name="account">The account.</param>
-        /// <param name="password">The password.</param>
+        /// <param name="dto">The dto.</param>
         /// <returns>The <see cref="ExecuteResult{T}"/>.</returns>
-        public ExecuteResult<string> Login(string account, string password)
+        public ExecuteResult<string> Login(LoginDto dto)
         {
-            var hashPassword = Md5.GetHash(password);
-            var user = this._userRepository.Get(item => item.Account == account && item.Password == hashPassword);
+            var hashPassword = Md5.GetHash(dto.Password);
+            var user = this._userRepository.Get(item => item.Account == dto.Account && item.Password == hashPassword);
             if (user != null)
             {
                 var token = JwtToken.Generate(Settings.Default.Secret, user);
