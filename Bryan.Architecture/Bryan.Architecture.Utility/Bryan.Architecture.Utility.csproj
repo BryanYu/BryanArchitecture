@@ -62,13 +62,14 @@
     <Compile Include="Cryptography\JwtToken.cs" />
     <Compile Include="Cryptography\Md5.cs" />
     <Compile Include="Logger\Enum\LoggerLevel.cs" />
-    <Compile Include="Logger\Implement\Logger.cs" />
+    <Compile Include="Logger\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="packages.config" />
   </ItemGroup>
