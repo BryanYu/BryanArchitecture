@@ -15,8 +15,8 @@ namespace Bryan.Architecture.Utility.UnitTests.Logger
         [TestCase(LoggerLevel.Debug)]
         [TestCase(LoggerLevel.Info)]
         [TestCase(LoggerLevel.Warn)]
+        [TestCase(LoggerLevel.Error)]
         [TestCase(LoggerLevel.Fatal)]
-        [TestCase(LoggerLevel.Warn)]
         public void When_Rasie_Exception_Log_To_File(LoggerLevel level)
         {
             try
