@@ -20,6 +20,7 @@ namespace Bryan.Architecture.Utility.Logger
         /// <summary>The log.</summary>
         /// <param name="level">The level.</param>
         /// <param name="exception">The exception.</param>
+        /// <param name="message">The message.</param>
         public static void Log(LoggerLevel level, Exception exception = null, string message = "")
         {
             var logLevel = GetLogLevel(level);

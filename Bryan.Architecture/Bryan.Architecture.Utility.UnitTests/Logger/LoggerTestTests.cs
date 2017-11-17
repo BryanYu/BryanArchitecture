@@ -8,9 +8,12 @@ using NUnit.Framework;
 
 namespace Bryan.Architecture.Utility.UnitTests.Logger
 {
+    /// <summary>The logger test.</summary>
     [TestFixture]
     public class LoggerTest
     {
+        /// <summary>The when_ rasie_ exception_ log_ to_ file.</summary>
+        /// <param name="level">The level.</param>
         [TestCase(LoggerLevel.Trace)]
         [TestCase(LoggerLevel.Debug)]
         [TestCase(LoggerLevel.Info)]

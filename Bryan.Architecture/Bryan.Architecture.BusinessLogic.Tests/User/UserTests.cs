@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using Bryan.Architecture.BusinessLogic.Implement;
 using Bryan.Architecture.BusinessLogic.Interface;
@@ -10,7 +11,6 @@ using Bryan.Architecture.DomainModel.Base.Enum;
 using Bryan.Architecture.DomainModel.Dto.User;
 using NSubstitute;
 using NUnit.Framework;
-using System.Linq.Expressions;
 
 namespace Bryan.Architecture.BusinessLogic.Tests.User
 {
