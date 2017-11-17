@@ -11,8 +11,13 @@ namespace Bryan.Architecture.Utility.UnitTests.Logger
     [TestFixture]
     public class LoggerTest
     {
-        [Test]
-        public void When_Rasie_Trace_Log_To_Console()
+        [TestCase(LoggerLevel.Trace)]
+        [TestCase(LoggerLevel.Debug)]
+        [TestCase(LoggerLevel.Info)]
+        [TestCase(LoggerLevel.Warn)]
+        [TestCase(LoggerLevel.Fatal)]
+        [TestCase(LoggerLevel.Warn)]
+        public void When_Rasie_Exception_Log_To_File(LoggerLevel level)
         {
             try
             {
@@ -21,7 +26,10 @@ namespace Bryan.Architecture.Utility.UnitTests.Logger
             }
             catch (Exception e)
             {
-                Bryan.Architecture.Utility.Logger.Logger.Log(LoggerLevel.Debug, e, message: "Test");
+                Bryan.Architecture.Utility.Logger.Logger.Log(level, e, message: "Test");
+
+                var file = AppDomain.CurrentDomain.BaseDirectory + "\\Logs\\" + level.ToString() + ".log";
+                FileAssert.Exists(file);
             }
         }
     }
