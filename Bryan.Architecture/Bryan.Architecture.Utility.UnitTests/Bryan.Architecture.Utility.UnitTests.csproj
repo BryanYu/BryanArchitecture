@@ -49,6 +49,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache\DefaultCacheTests.cs" />
+    <Compile Include="Cache\TempCacheData.cs" />
     <Compile Include="Cyptography\JwtTokenTests.cs" />
     <Compile Include="Cyptography\Md5Tests.cs" />
     <Compile Include="Logger\LoggerTestTests.cs" />

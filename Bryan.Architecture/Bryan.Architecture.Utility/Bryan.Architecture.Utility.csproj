@@ -54,6 +54,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +63,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache\Implement\DefaultCache.cs" />
+    <Compile Include="Cache\Interface\ICache.cs" />
     <Compile Include="Cryptography\JwtToken.cs" />
     <Compile Include="Cryptography\Md5.cs" />
     <Compile Include="Logger\Enum\LoggerLevel.cs" />
