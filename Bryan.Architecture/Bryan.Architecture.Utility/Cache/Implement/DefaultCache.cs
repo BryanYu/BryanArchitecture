@@ -22,16 +22,12 @@ namespace Bryan.Architecture.Utility.Cache.Implement
         /// <typeparam name="T">Object</typeparam>
         public void Set<T>(string key, T value, DateTime expiredTime, TimeSpan? slidingExpiration = null)
         {
-            if (this._cache.Contains(key))
-            {
-                return;
-            }
-
-            var policy = new CacheItemPolicy { AbsoluteExpiration = expiredTime };
+            var policy = new CacheItemPolicy { AbsoluteExpiration = expiredTime.ToUniversalTime() };
             if (slidingExpiration.HasValue)
             {
                 policy.SlidingExpiration = slidingExpiration.Value;
             }
+
             var cacheValue = Newtonsoft.Json.JsonConvert.SerializeObject(value);
             var item = new CacheItem(key, cacheValue);
             this._cache.Add(key, item, policy);
