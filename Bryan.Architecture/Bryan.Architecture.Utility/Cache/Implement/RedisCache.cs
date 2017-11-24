@@ -12,13 +12,20 @@ namespace Bryan.Architecture.Utility.Cache.Implement
     /// <summary>The redis cache.</summary>
     public class RedisCache : ICache
     {
-        private ConnectionMultiplexer _redis;
+        /// <summary>The _redis.</summary>
+        private IConnectionMultiplexer _redis;
 
+        /// <summary>The _db.</summary>
         private IDatabase _db;
 
-        public RedisCache(int databaseNumber, string configuration)
+        /// <summary>Initializes a new instance of the <see cref="RedisCache"/> class.</summary>
+        /// <param name="databaseNumber">The database number.</param>
+        /// <param name="host">The host.</param>
+        /// <param name="port">The port.</param>
+        /// <param name="password">The password.</param>
+        public RedisCache(int databaseNumber, string host, string port = "6379", string password = "")
         {
-            this._redis = ConnectionMultiplexer.Connect(configuration);
+            this._redis = ConnectionMultiplexer.Connect($"{host}:{port},password={password}");
             this._db = this._redis.GetDatabase(databaseNumber);
         }
 
@@ -26,22 +33,19 @@ namespace Bryan.Architecture.Utility.Cache.Implement
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
         /// <param name="expiredTime">The expired time.</param>
-        /// <param name="slidingExpiration">The sliding expiration.</param>
         /// <typeparam name="T">Data</typeparam>
-        public void Set<T>(string key, T value, DateTime expiredTime, TimeSpan? slidingExpiration = null)
+        public void Set<T>(string key, T value, DateTime expiredTime)
         {
             var expireTimeSpan = expiredTime.ToUniversalTime().Subtract(DateTime.UtcNow);
-            if (typeof(T).IsValueType)
-            {
-                this._db.StringSet(key, value.ToString(), expireTimeSpan);
-            }
+            var jsonValue = Newtonsoft.Json.JsonConvert.SerializeObject(value);
+            this._db.StringSet(key, jsonValue, expireTimeSpan);
         }
 
         /// <summary>The remove.</summary>
         /// <param name="key">The key.</param>
         public void Remove(string key)
         {
-            throw new NotImplementedException();
+            this._db.KeyDelete(key);
         }
 
         /// <summary>The get.</summary>
@@ -50,7 +54,13 @@ namespace Bryan.Architecture.Utility.Cache.Implement
         /// <returns>The <see cref="T"/>.</returns>
         public T Get<T>(string key)
         {
-            throw new NotImplementedException();
+            var value = this._db.StringGet(key);
+            if (!string.IsNullOrEmpty(value))
+            {
+                return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(value);
+            }
+
+            return default(T);
         }
     }
 }

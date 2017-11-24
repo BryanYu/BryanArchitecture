@@ -1,29 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Bryan.Architecture.Utility.Cache.Implement;
 using NUnit.Framework;
 
-namespace Bryan.Architecture.Utility.UnitTests.Cache
+namespace Bryan.Architecture.Utility.IntegrationTests.Cache
 {
-    /// <summary>The default cache tests.</summary>
+    /// <summary>The redis cache tests.</summary>
     [TestFixture]
-    public class DefaultCacheTests
+    [Category("IntegrationTests RedisCacheTests")]
+#if DEBUG
+    [Ignore("local")]
+#endif
+    public class RedisCacheTests
     {
         /// <summary>The target.</summary>
-        private DefaultCache _target = new DefaultCache();
+        private RedisCache _target;
 
         /// <summary>The _temp cache data.</summary>
         private TempCacheData _tempCacheData = new TempCacheData { Id = 1, Name = "Bryan" };
+
+        /// <summary>The set up.</summary>
+        [SetUp]
+        public void SetUp()
+        {
+            this._target = new RedisCache(0, "35.197.147.100", password: "mayday00066");
+        }
 
         /// <summary>The when_ set_ value_ to_ cache_ get_ cache.</summary>
         [Test]
         public void When_Set_Value_To_Cache_Get_Cache()
         {
-            this._target.Set("Bryan", _tempCacheData, DateTime.Now.AddDays(1));
+            this._target.Set("Bryan", this._tempCacheData, DateTime.Now.AddDays(1));
             var actual = this._target.Get<TempCacheData>("Bryan") != null;
             Assert.IsTrue(actual);
         }
@@ -32,7 +39,7 @@ namespace Bryan.Architecture.Utility.UnitTests.Cache
         [Test]
         public void When_Remove_Value_From_Cache_Get_Null()
         {
-            this._target.Set("Bryan", this._tempCacheData, DateTime.Now.AddDays(1));
+            this._target.Set("Bryan", this._tempCacheData, DateTime.UtcNow.AddDays(1));
             this._target.Remove("Bryan");
             var actual = this._target.Get<TempCacheData>("Bryan") == null;
             Assert.IsTrue(actual);
@@ -42,10 +49,17 @@ namespace Bryan.Architecture.Utility.UnitTests.Cache
         [Test]
         public void When_Set_Value_With_ExpiredTime_Is_Valid()
         {
-            this._target.Set("Bryan", this._tempCacheData, DateTime.Now.AddSeconds(1));
-            Thread.Sleep(3000);
+            this._target.Set("Bryan", this._tempCacheData, DateTime.UtcNow.AddSeconds(5));
+            Thread.Sleep(5000);
             var actual = this._target.Get<TempCacheData>("Bryan") == null;
             Assert.IsTrue(actual);
+        }
+
+        /// <summary>The set down.</summary>
+        [TearDown]
+        public void TearDown()
+        {
+            this._target.Remove("Bryan");
         }
     }
 }

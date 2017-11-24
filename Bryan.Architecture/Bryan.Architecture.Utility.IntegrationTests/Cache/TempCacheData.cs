@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bryan.Architecture.Utility.UnitTests.Cache
+﻿namespace Bryan.Architecture.Utility.IntegrationTests.Cache
 {
     /// <summary>The temp cache data.</summary>
     public class TempCacheData

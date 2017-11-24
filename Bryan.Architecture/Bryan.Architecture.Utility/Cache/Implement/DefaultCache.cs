@@ -18,16 +18,10 @@ namespace Bryan.Architecture.Utility.Cache.Implement
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
         /// <param name="expiredTime">The expired time.</param>
-        /// <param name="slidingExpiration">The sliding expiration.</param>
         /// <typeparam name="T">Object</typeparam>
-        public void Set<T>(string key, T value, DateTime expiredTime, TimeSpan? slidingExpiration = null)
+        public void Set<T>(string key, T value, DateTime expiredTime)
         {
             var policy = new CacheItemPolicy { AbsoluteExpiration = expiredTime.ToUniversalTime() };
-            if (slidingExpiration.HasValue)
-            {
-                policy.SlidingExpiration = slidingExpiration.Value;
-            }
-
             var cacheValue = Newtonsoft.Json.JsonConvert.SerializeObject(value);
             var item = new CacheItem(key, cacheValue);
             this._cache.Add(key, item, policy);
@@ -60,6 +54,7 @@ namespace Bryan.Architecture.Utility.Cache.Implement
             {
                 return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(cacheValue);
             }
+
             return default(T);
         }
     }
