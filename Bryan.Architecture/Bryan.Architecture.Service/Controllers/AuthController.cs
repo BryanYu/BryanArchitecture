@@ -27,9 +27,21 @@ namespace Bryan.Architecture.Service.Controllers
         /// <summary>The login.</summary>
         /// <param name="dto">The dto.</param>
         /// <returns>The <see cref="IHttpActionResult"/>.</returns>
-        public IHttpActionResult Login(LoginDto dto)
+        public IHttpActionResult Login([FromBody]LoginDto dto)
         {
             var result = this._userBll.Login(dto);
+            return this.Ok(result);
+        }
+
+        /// <summary>The get user.</summary>
+        /// <param name="id">The id.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>The <see cref="IHttpActionResult"/>.</returns>
+        [HttpGet]
+        public IHttpActionResult GetUser([FromUri]GetUserDto dto)
+        {
+            var result = this._userBll.GetUser(dto);
             return this.Ok(result);
         }
     }

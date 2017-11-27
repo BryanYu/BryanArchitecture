@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Autofac.Extras.DynamicProxy;
+using Bryan.Architecture.BusinessLogic.Interceptor;
 using Bryan.Architecture.BusinessLogic.Interface;
 using Bryan.Architecture.BusinessLogic.Properties;
 using Bryan.Architecture.DataAccess;
@@ -9,11 +7,14 @@ using Bryan.Architecture.DataAccess.Base;
 using Bryan.Architecture.DomainModel.Base;
 using Bryan.Architecture.DomainModel.Base.Enum;
 using Bryan.Architecture.DomainModel.Dto.User;
+using Bryan.Architecture.Utility.Attributes;
 using Bryan.Architecture.Utility.Cryptography;
+using Bryan.Architecture.Utility.Logger.Enum;
 
 namespace Bryan.Architecture.BusinessLogic.Implement
 {
     /// <summary>The user bll.</summary>
+    [Intercept(typeof(BllInterceptor))]
     public class UserBll : IUserBll
     {
         /// <summary>The _user repository.</summary>
@@ -24,6 +25,24 @@ namespace Bryan.Architecture.BusinessLogic.Implement
         public UserBll(IRepository<User> userRepository)
         {
             this._userRepository = userRepository;
+        }
+
+        /// <summary>The get user.</summary>
+        /// <param name="dto">The dto.</param>
+        /// <returns>The <see cref="ExecuteResult{T}"/>.</returns>
+        [Log(IsLogArguments = true, Level = LoggerLevel.Trace)]
+        [Cache(Key = "User", ExpiredMinutes = 30)]
+        public ExecuteResult<UserDto> GetUser(GetUserDto dto)
+        {
+            return new ExecuteResult<UserDto>
+            {
+                Data = new UserDto
+                {
+                    Id = dto.Id,
+                    Name = dto.Name,
+                    Password = dto.Password
+                }
+            };
         }
 
         /// <summary>The login.</summary>

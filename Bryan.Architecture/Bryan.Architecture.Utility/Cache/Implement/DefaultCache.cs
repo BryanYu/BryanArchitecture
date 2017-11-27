@@ -17,11 +17,14 @@ namespace Bryan.Architecture.Utility.Cache.Implement
         /// <summary>The set.</summary>
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
-        /// <param name="expiredTime">The expired time.</param>
-        /// <typeparam name="T">Object</typeparam>
-        public void Set<T>(string key, T value, DateTime expiredTime)
+        /// <param name="expiredMinutes">The expired minutes.</param>
+        /// <typeparam name="T">Data</typeparam>
+        public void Set<T>(string key, T value, int expiredMinutes = 30)
         {
-            var policy = new CacheItemPolicy { AbsoluteExpiration = expiredTime.ToUniversalTime() };
+            var policy = new CacheItemPolicy
+            {
+                AbsoluteExpiration = DateTime.Now.Add(TimeSpan.FromMinutes(expiredMinutes))
+            };
             var cacheValue = Newtonsoft.Json.JsonConvert.SerializeObject(value);
             var item = new CacheItem(key, cacheValue);
             this._cache.Add(key, item, policy);

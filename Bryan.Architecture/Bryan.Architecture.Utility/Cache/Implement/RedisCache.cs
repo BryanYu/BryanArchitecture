@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bryan.Architecture.Utility.Cache.Interface;
-
 using StackExchange.Redis;
 
 namespace Bryan.Architecture.Utility.Cache.Implement
@@ -32,11 +31,11 @@ namespace Bryan.Architecture.Utility.Cache.Implement
         /// <summary>The set.</summary>
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
-        /// <param name="expiredTime">The expired time.</param>
+        /// <param name="expiredMinutes">The expired minutes.</param>
         /// <typeparam name="T">Data</typeparam>
-        public void Set<T>(string key, T value, DateTime expiredTime)
+        public void Set<T>(string key, T value, int expiredMinutes = 30)
         {
-            var expireTimeSpan = expiredTime.ToUniversalTime().Subtract(DateTime.UtcNow);
+            var expireTimeSpan = TimeSpan.FromMinutes(expiredMinutes);
             var jsonValue = Newtonsoft.Json.JsonConvert.SerializeObject(value);
             this._db.StringSet(key, jsonValue, expireTimeSpan);
         }

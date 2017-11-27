@@ -10,5 +10,10 @@ namespace Bryan.Architecture.BusinessLogic.Interface
         /// <param name="dto">The dto.</param>
         /// <returns>The <see cref="ExecuteResult{T}"/>.</returns>
         ExecuteResult<string> Login(LoginDto dto);
+
+        /// <summary>The get user.</summary>
+        /// <param name="dto">The dto.</param>
+        /// <returns>The <see cref="ExecuteResult"/>.</returns>
+        ExecuteResult<UserDto> GetUser(GetUserDto dto);
     }
 }

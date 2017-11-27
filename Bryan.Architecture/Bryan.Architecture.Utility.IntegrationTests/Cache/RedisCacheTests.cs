@@ -30,7 +30,7 @@ namespace Bryan.Architecture.Utility.IntegrationTests.Cache
         [Test]
         public void When_Set_Value_To_Cache_Get_Cache()
         {
-            this._target.Set("Bryan", this._tempCacheData, DateTime.Now.AddDays(1));
+            this._target.Set("Bryan", this._tempCacheData, 30);
             var actual = this._target.Get<TempCacheData>("Bryan") != null;
             Assert.IsTrue(actual);
         }
@@ -39,7 +39,7 @@ namespace Bryan.Architecture.Utility.IntegrationTests.Cache
         [Test]
         public void When_Remove_Value_From_Cache_Get_Null()
         {
-            this._target.Set("Bryan", this._tempCacheData, DateTime.UtcNow.AddDays(1));
+            this._target.Set("Bryan", this._tempCacheData, 30);
             this._target.Remove("Bryan");
             var actual = this._target.Get<TempCacheData>("Bryan") == null;
             Assert.IsTrue(actual);
@@ -49,7 +49,7 @@ namespace Bryan.Architecture.Utility.IntegrationTests.Cache
         [Test]
         public void When_Set_Value_With_ExpiredTime_Is_Valid()
         {
-            this._target.Set("Bryan", this._tempCacheData, DateTime.UtcNow.AddSeconds(5));
+            this._target.Set("Bryan", this._tempCacheData, 1);
             Thread.Sleep(5000);
             var actual = this._target.Get<TempCacheData>("Bryan") == null;
             Assert.IsTrue(actual);

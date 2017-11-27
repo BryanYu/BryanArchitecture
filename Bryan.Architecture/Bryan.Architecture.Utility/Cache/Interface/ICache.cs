@@ -12,9 +12,9 @@ namespace Bryan.Architecture.Utility.Cache.Interface
         /// <summary>The set.</summary>
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
-        /// <param name="expiredTime">The expired time.</param>
+        /// <param name="expiredMinutes">The expired time.</param>
         /// <typeparam name="T">Data</typeparam>
-        void Set<T>(string key, T value, DateTime expiredTime);
+        void Set<T>(string key, T value, int expiredMinutes = 30);
 
         /// <summary>The remove.</summary>
         /// <param name="key">The key.</param>
