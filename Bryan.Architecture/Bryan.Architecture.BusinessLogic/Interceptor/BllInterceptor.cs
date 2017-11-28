@@ -80,15 +80,23 @@ namespace Bryan.Architecture.BusinessLogic.Interceptor
         /// <param name="expiredSecond">The expired second.</param>
         private void CacheProcess(IInvocation invocation, int expiredSecond)
         {
-            var cacheKey = this.GetCacheKey(invocation);
-            var cacheValue = this._cache.Get<object>(cacheKey);
-            if (cacheValue != null)
+            try
             {
-                invocation.ReturnValue = cacheValue;
+                var cacheKey = this.GetCacheKey(invocation);
+                var cacheValue = this._cache.Get<object>(cacheKey);
+                if (cacheValue != null)
+                {
+                    invocation.ReturnValue = cacheValue;
+                }
+                else
+                {
+                    this._cache.Set(cacheKey, invocation.ReturnValue, expiredSecond);
+                }
             }
-            else
+            catch (Exception e)
             {
-                this._cache.Set(cacheKey, invocation.ReturnValue, expiredSecond);
+                Logger.Log(LoggerLevel.Error, e);
+                return;
             }
         }
 

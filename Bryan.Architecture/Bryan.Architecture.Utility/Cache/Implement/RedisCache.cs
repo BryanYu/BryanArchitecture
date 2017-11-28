@@ -11,11 +11,34 @@ namespace Bryan.Architecture.Utility.Cache.Implement
     /// <summary>The redis cache.</summary>
     public class RedisCache : ICache
     {
-        /// <summary>The _redis.</summary>
-        private IConnectionMultiplexer _redis;
-
         /// <summary>The _db.</summary>
         private IDatabase _db;
+
+        /// <summary>Gets the db.</summary>
+        private IDatabase DB
+        {
+            get
+            {
+                if (this._db == null)
+                {
+                    this._db = ConnectionMultiplexer.Connect($"{this._host}:{this._port},password={this._password},connectTimeout={500}")
+                        .GetDatabase(this._databaseNumber);
+                }
+                return this._db;
+            }
+        }
+
+        /// <summary>The _database number.</summary>
+        private int _databaseNumber;
+
+        /// <summary>The _host.</summary>
+        private string _host;
+
+        /// <summary>The _port.</summary>
+        private string _port;
+
+        /// <summary>The _password.</summary>
+        private string _password;
 
         /// <summary>Initializes a new instance of the <see cref="RedisCache"/> class.</summary>
         /// <param name="databaseNumber">The database number.</param>
@@ -24,8 +47,10 @@ namespace Bryan.Architecture.Utility.Cache.Implement
         /// <param name="password">The password.</param>
         public RedisCache(int databaseNumber, string host, string port = "6379", string password = "")
         {
-            this._redis = ConnectionMultiplexer.Connect($"{host}:{port},password={password}");
-            this._db = this._redis.GetDatabase(databaseNumber);
+            this._databaseNumber = databaseNumber;
+            this._host = host;
+            this._port = port;
+            this._password = password;
         }
 
         /// <summary>The set.</summary>
@@ -37,14 +62,14 @@ namespace Bryan.Architecture.Utility.Cache.Implement
         {
             var expireTimeSpan = TimeSpan.FromSeconds(expiredSecond);
             var jsonValue = Newtonsoft.Json.JsonConvert.SerializeObject(value);
-            this._db.StringSet(key, jsonValue, expireTimeSpan);
+            this.DB.StringSet(key, jsonValue, expireTimeSpan);
         }
 
         /// <summary>The remove.</summary>
         /// <param name="key">The key.</param>
         public void Remove(string key)
         {
-            this._db.KeyDelete(key);
+            this.DB.KeyDelete(key);
         }
 
         /// <summary>The get.</summary>
@@ -53,7 +78,7 @@ namespace Bryan.Architecture.Utility.Cache.Implement
         /// <returns>The <see cref="T"/>.</returns>
         public T Get<T>(string key)
         {
-            var value = this._db.StringGet(key);
+            var value = this.DB.StringGet(key);
             if (!string.IsNullOrEmpty(value))
             {
                 return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(value);
