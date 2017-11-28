@@ -112,9 +112,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Bryan.Architecture.Service.xml" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
-    <Content Include="Web.Template.config" />
+    <Content Include="Web.Template.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutofacConfig.cs" />
@@ -142,9 +145,7 @@
       <DependentUpon>Web.Template.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Bryan.Architecture.BusinessLogic\Bryan.Architecture.BusinessLogic.csproj">
       <Project>{69983926-E8DE-4C88-9934-523618226A3D}</Project>

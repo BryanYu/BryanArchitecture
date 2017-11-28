@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Partial\BryanArchitecutureEntities.Partial.cs" />
     <Compile Include="Base\BaseRepository.cs" />
     <Compile Include="Base\IRepository.cs" />
     <Compile Include="BryanArchitecture.Context.cs">

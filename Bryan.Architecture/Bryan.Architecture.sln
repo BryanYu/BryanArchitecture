@@ -37,6 +37,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntegrationTest", "Integrat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bryan.Architecture.Utility.IntegrationTests", "Bryan.Architecture.Utility.IntegrationTests\Bryan.Architecture.Utility.IntegrationTests.csproj", "{5FA4B0A7-E4AD-4F48-8936-E6CBF9C295B7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{342BC46B-59E9-4A87-9950-A2B239B607D7}"
+	ProjectSection(SolutionItems) = preProject
+		..\DataBase\BryanArchitecuture.mdf = ..\DataBase\BryanArchitecuture.mdf
+		..\DataBase\BryanArchitecuture_log.ldf = ..\DataBase\BryanArchitecuture_log.ldf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
