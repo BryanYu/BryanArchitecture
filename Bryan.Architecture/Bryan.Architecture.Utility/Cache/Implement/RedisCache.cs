@@ -31,11 +31,11 @@ namespace Bryan.Architecture.Utility.Cache.Implement
         /// <summary>The set.</summary>
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
-        /// <param name="expiredMinutes">The expired minutes.</param>
+        /// <param name="expiredSecond">The expired second.</param>
         /// <typeparam name="T">Data</typeparam>
-        public void Set<T>(string key, T value, int expiredMinutes = 30)
+        public void Set<T>(string key, T value, int expiredSecond = 1800)
         {
-            var expireTimeSpan = TimeSpan.FromMinutes(expiredMinutes);
+            var expireTimeSpan = TimeSpan.FromSeconds(expiredSecond);
             var jsonValue = Newtonsoft.Json.JsonConvert.SerializeObject(value);
             this._db.StringSet(key, jsonValue, expireTimeSpan);
         }

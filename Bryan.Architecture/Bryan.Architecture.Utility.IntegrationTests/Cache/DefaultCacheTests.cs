@@ -45,7 +45,7 @@ namespace Bryan.Architecture.Utility.IntegrationTests.Cache
         [Test]
         public void When_Set_Value_With_ExpiredTime_Is_Valid()
         {
-            this._target.Set("Bryan", this._tempCacheData, 30);
+            this._target.Set("Bryan", this._tempCacheData, 1);
             Thread.Sleep(5000);
             var actual = this._target.Get<TempCacheData>("Bryan") == null;
             Assert.IsTrue(actual);

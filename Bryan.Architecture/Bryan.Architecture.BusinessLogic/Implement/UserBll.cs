@@ -31,7 +31,7 @@ namespace Bryan.Architecture.BusinessLogic.Implement
         /// <param name="dto">The dto.</param>
         /// <returns>The <see cref="ExecuteResult{T}"/>.</returns>
         [Log(IsLogArguments = true, Level = LoggerLevel.Trace)]
-        [Cache(Key = "User", ExpiredMinutes = 30)]
+        [Cache(ExpiredSecond = 3600)]
         public ExecuteResult<UserDto> GetUser(GetUserDto dto)
         {
             return new ExecuteResult<UserDto>

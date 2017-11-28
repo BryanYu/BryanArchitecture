@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CodeDom;
 using System.Linq;
 using System.Reflection;
 using Bryan.Architecture.Utility.Attributes;
@@ -7,6 +6,7 @@ using Bryan.Architecture.Utility.Cache.Interface;
 using Bryan.Architecture.Utility.Logger;
 using Bryan.Architecture.Utility.Logger.Enum;
 using Castle.DynamicProxy;
+using Newtonsoft.Json;
 
 namespace Bryan.Architecture.BusinessLogic.Interceptor
 {
@@ -14,7 +14,14 @@ namespace Bryan.Architecture.BusinessLogic.Interceptor
     public class BllInterceptor : IInterceptor
     {
         /// <summary>The cache.</summary>
-        public ICache Cache;
+        private ICache _cache;
+
+        /// <summary>Initializes a new instance of the <see cref="BllInterceptor"/> class.</summary>
+        /// <param name="cache">The cache.</param>
+        public BllInterceptor(ICache cache)
+        {
+            this._cache = cache;
+        }
 
         /// <summary>The intercept.</summary>
         /// <param name="invocation">The invocation.</param>
@@ -23,14 +30,21 @@ namespace Bryan.Architecture.BusinessLogic.Interceptor
             var logAttribute = invocation.MethodInvocationTarget.GetCustomAttributes(typeof(LogAttribute)).FirstOrDefault() as LogAttribute;
             if (logAttribute != null)
             {
-                this.Log(invocation, logAttribute);
+                this.LogProcess(invocation, logAttribute);
+            }
+
+            var cacheAttribute = invocation.MethodInvocationTarget.GetCustomAttributes(typeof(CacheAttribute))
+                                     .FirstOrDefault() as CacheAttribute;
+            if (cacheAttribute != null)
+            {
+                this.CacheProcess(invocation, cacheAttribute.ExpiredSecond);
             }
         }
 
         /// <summary>The log.</summary>
         /// <param name="invocation">The invocation.</param>
         /// <param name="logAttribute">The log attribute.</param>
-        private void Log(IInvocation invocation, LogAttribute logAttribute)
+        private void LogProcess(IInvocation invocation, LogAttribute logAttribute)
         {
             var message = string.IsNullOrEmpty(logAttribute.Message)
                               ? $"Call Method {invocation.Method.Name}"
@@ -53,20 +67,37 @@ namespace Bryan.Architecture.BusinessLogic.Interceptor
                     invocation.Proceed();
                     Logger.Log(logAttribute.Level, message: endMessage);
                 }
-
-                var cacheAttribute = invocation.MethodInvocationTarget.GetCustomAttributes(typeof(CacheAttribute))
-                                         .FirstOrDefault() as CacheAttribute;
-
-                if (cacheAttribute != null)
-                {
-                    this.Cache.Set(cacheAttribute.Key, invocation.ReturnValue, cacheAttribute.ExpiredMinutes);
-                }
             }
             catch (Exception e)
             {
                 Logger.Log(LoggerLevel.Error, e, arguments: invocation.Arguments);
                 throw e;
             }
+        }
+
+        /// <summary>The cache process.</summary>
+        /// <param name="invocation">The invocation.</param>
+        /// <param name="expiredSecond">The expired second.</param>
+        private void CacheProcess(IInvocation invocation, int expiredSecond)
+        {
+            var cacheKey = this.GetCacheKey(invocation);
+            var cacheValue = this._cache.Get<object>(cacheKey);
+            if (cacheValue != null)
+            {
+                invocation.ReturnValue = cacheValue;
+            }
+            else
+            {
+                this._cache.Set(cacheKey, invocation.ReturnValue, expiredSecond);
+            }
+        }
+
+        /// <summary>The get cache key.</summary>
+        /// <param name="invocation">The invocation.</param>
+        /// <returns>The <see cref="string"/>.</returns>
+        private string GetCacheKey(IInvocation invocation)
+        {
+            return $"{invocation.TargetType.Name}.{invocation.MethodInvocationTarget.Name}.{JsonConvert.SerializeObject(invocation.Arguments)}";
         }
     }
 }

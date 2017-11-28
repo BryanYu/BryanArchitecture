@@ -54,13 +54,13 @@ namespace Bryan.Architecture.Service.App_Start
                                      new NamedParameter("port", 6379),
                                      new NamedParameter("password", redisPassword)
                                  };
-            builder.RegisterType<ICache>().As<RedisCache>().WithParameters(parameters);
-
-            builder.RegisterType<BllInterceptor>().PropertiesAutowired().InstancePerRequest();
+            builder.RegisterType<RedisCache>().As<ICache>().WithParameters(parameters).InstancePerRequest();
+            builder.Register(c => new BllInterceptor(new RedisCache(0, redisHost, "6379", redisPassword))).SingleInstance();
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterWebApiFilterProvider(config);
 
             var container = builder.Build();
+
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
     }

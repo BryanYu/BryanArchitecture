@@ -34,9 +34,7 @@ namespace Bryan.Architecture.Service.Controllers
         }
 
         /// <summary>The get user.</summary>
-        /// <param name="id">The id.</param>
-        /// <param name="name">The name.</param>
-        /// <param name="password">The password.</param>
+        /// <param name="dto">The dto.</param>
         /// <returns>The <see cref="IHttpActionResult"/>.</returns>
         [HttpGet]
         public IHttpActionResult GetUser([FromUri]GetUserDto dto)
