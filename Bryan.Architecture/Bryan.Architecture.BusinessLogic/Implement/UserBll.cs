@@ -34,15 +34,11 @@ namespace Bryan.Architecture.BusinessLogic.Implement
         [Cache(ExpiredSecond = 3600)]
         public ExecuteResult<UserDto> GetUser(GetUserDto dto)
         {
-            return new ExecuteResult<UserDto>
-            {
-                Data = new UserDto
-                {
-                    Id = dto.Id,
-                    Name = dto.Name,
-                    Password = dto.Password
-                }
-            };
+            var user = this._userRepository.Get(
+                item => item.Account == dto.Account,
+                item2 => new UserDto { Id = item2.Id, Account = item2.Account, Password = item2.Password });
+
+            return new ExecuteResult<UserDto>(data: user);
         }
 
         /// <summary>The login.</summary>
@@ -51,14 +47,31 @@ namespace Bryan.Architecture.BusinessLogic.Implement
         public ExecuteResult<string> Login(LoginDto dto)
         {
             var hashPassword = Md5.GetHash(dto.Password);
-            var user = this._userRepository.Get(item => item.Account == dto.Account && item.Password == hashPassword);
+            var user = this._userRepository.Get(item => item.Account == dto.Account
+                                                     && item.Password == hashPassword);
             if (user != null)
             {
                 var token = JwtToken.Generate(Settings.Default.Secret, user);
-                return new ExecuteResult<string> { Status = ExcuteResultStatus.Success, Data = token };
+                return new ExecuteResult<string>(data: token);
             }
 
-            return new ExecuteResult<string>() { Status = ExcuteResultStatus.UserNotFound };
+            return new ExecuteResult<string>(status: ExcuteResultStatus.UserNotFound);
+        }
+
+        /// <summary>The update user.</summary>
+        /// <param name="dto">The dto.</param>
+        /// <returns>The <see cref="ExecuteResult{T}"/>.</returns>
+        public ExecuteResult<object> UpdateUser(UpdateUserDto dto)
+        {
+            var user = this._userRepository.Get(item => item.Id == dto.Id);
+            if (user == null)
+            {
+                return new ExecuteResult<object>(ExcuteResultStatus.UserNotFound);
+            }
+
+            user.Phone = dto.Phone;
+            this._userRepository.Update(user);
+            return new ExecuteResult<object>();
         }
     }
 }

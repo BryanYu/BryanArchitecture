@@ -24,6 +24,7 @@ namespace Bryan.Architecture.Utility.Cache.Implement
                     this._db = ConnectionMultiplexer.Connect($"{this._host}:{this._port},password={this._password},connectTimeout={500}")
                         .GetDatabase(this._databaseNumber);
                 }
+
                 return this._db;
             }
         }

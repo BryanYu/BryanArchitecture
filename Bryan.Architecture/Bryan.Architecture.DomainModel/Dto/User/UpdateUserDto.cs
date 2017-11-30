@@ -6,16 +6,13 @@ using System.Threading.Tasks;
 
 namespace Bryan.Architecture.DomainModel.Dto.User
 {
-    /// <summary>The user dto.</summary>
-    public class UserDto
+    /// <summary>The update user dto.</summary>
+    public class UpdateUserDto
     {
         /// <summary>Gets or sets the id.</summary>
         public int Id { get; set; }
 
-        /// <summary>Gets or sets the name.</summary>
-        public string Account { get; set; }
-
-        /// <summary>Gets or sets the password.</summary>
-        public string Password { get; set; }
+        /// <summary>Gets or sets the phone.</summary>
+        public string Phone { get; set; }
     }
 }

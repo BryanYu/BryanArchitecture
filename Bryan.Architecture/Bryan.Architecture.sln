@@ -41,6 +41,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		..\DataBase\BryanArchitecuture.mdf = ..\DataBase\BryanArchitecuture.mdf
 		..\DataBase\BryanArchitecuture_log.ldf = ..\DataBase\BryanArchitecuture_log.ldf
+		..\DataBase\Log.mdf = ..\DataBase\Log.mdf
+		..\DataBase\Log_log.ldf = ..\DataBase\Log_log.ldf
 	EndProjectSection
 EndProject
 Global

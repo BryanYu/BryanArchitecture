@@ -20,6 +20,7 @@ namespace Bryan.Architecture.DataAccess.Base
         public BaseRepository(DbContext context)
         {
             this._context = context;
+            this._context.Database.Log = (Log) => Console.WriteLine(Log);
         }
 
         /// <summary>The insert.</summary>
@@ -58,7 +59,7 @@ namespace Bryan.Architecture.DataAccess.Base
         /// <summary>The save changes.</summary>
         public void SaveChanges()
         {
-            this.SaveChanges();
+            this._context.SaveChanges();
         }
 
         /// <summary>The list.</summary>

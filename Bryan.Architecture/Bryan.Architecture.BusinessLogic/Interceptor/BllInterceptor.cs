@@ -39,7 +39,6 @@ namespace Bryan.Architecture.BusinessLogic.Interceptor
             {
                 this.CacheProcess(invocation, cacheAttribute.ExpiredSecond);
             }
-            invocation.Proceed();
         }
 
         /// <summary>The log.</summary>
@@ -72,7 +71,6 @@ namespace Bryan.Architecture.BusinessLogic.Interceptor
             catch (Exception e)
             {
                 Logger.Log(LoggerLevel.Error, e, arguments: invocation.Arguments);
-                throw e;
             }
         }
 
@@ -97,7 +95,6 @@ namespace Bryan.Architecture.BusinessLogic.Interceptor
             catch (Exception e)
             {
                 Logger.Log(LoggerLevel.Error, e);
-                return;
             }
         }
 

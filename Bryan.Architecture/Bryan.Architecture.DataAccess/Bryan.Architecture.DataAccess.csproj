@@ -74,6 +74,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuditLog.cs">
+      <DependentUpon>BryanArchitecture.tt</DependentUpon>
+    </Compile>
     <Compile Include="Partial\BryanArchitecutureEntities.Partial.cs" />
     <Compile Include="Base\BaseRepository.cs" />
     <Compile Include="Base\IRepository.cs" />
