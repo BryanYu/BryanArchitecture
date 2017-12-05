@@ -1,17 +1,19 @@
 # BryanArchitecture
 
-自己製作的.NET Web開發架構
-
-以開發一個後台管理系統為目標 實作自己的架構
+自己設計的的.NET Web的開發架構，包含前後端專案架構與設計。
 
 * * *
 
-# 專案分層：
+# 架構圖
+
+![架構圖](https://github.com/BryanYu/BryanArchitecture/blob/master/BryanArchitecture.png)
+
+# 專案功能說明：
 * ### BusinessLogic：實現商業邏輯
 * ### DataAccess：實現資料存取
-* ### Infrastructure：所有專案的共用工具及程式服務實作
-* ### Presentation：所有End-User接觸的介面專案(例如：Web、Console、WinForm...等)
-* ### Service：開放BusinessLogic成為API，給各種Presentation使用
+* ### Infrastructure：所有專案的共用程式、基礎服務、及AOP實作。
+* ### Presentation：展示層，為End-User使用的介面，例如：Web、Mobile、Winform、Console...等
+* ### Service：調用BusinessLogic並開放成為Web API，給各種Presentation介接使用
 * ### Test：單元測試、整合測試專案
 
 * * *
@@ -29,9 +31,13 @@
 | Error    	| 應用程式錯誤，或有例外狀況                   | Debug、Dev、Prod | File、DataBase、Email |
 | Fatal    	| 應用程式損壞      	                        | Debug、Dev、Prod | File、DataBase、Email |
 
-### Email：
+### Cache
+* MemoryCache
+* RedisCache
 
-### Cache：
+### Cryptography
+* JwtToken
+* MD5
 
 * * *
 
@@ -40,6 +46,7 @@
 * Vue.js
 * TypeScript
 * Boostrap
+* Html
 
 ### 後端：
 * .NET Web API
@@ -49,7 +56,14 @@
 ### 資料庫：
 * MS SQL Server
 
-Comming Soon!
+### 套件：
+* Swagger
+* Autofac
+* NLog
+* Json.net
+
+
+
 
 
 
