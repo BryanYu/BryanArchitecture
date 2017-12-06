@@ -74,10 +74,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attribute\AuditAttribute.cs" />
     <Compile Include="AuditLog.cs">
       <DependentUpon>BryanArchitecture.tt</DependentUpon>
     </Compile>
-    <Compile Include="Partial\BryanArchitecutureEntities.Partial.cs" />
+    <Compile Include="Context.Partial\BryanArchitecutureEntities.Partial.cs" />
     <Compile Include="Base\BaseRepository.cs" />
     <Compile Include="Base\IRepository.cs" />
     <Compile Include="BryanArchitecture.Context.cs">
@@ -96,6 +97,7 @@
       <DependentUpon>BryanArchitecture.edmx</DependentUpon>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="Entity.Partial\User.Partial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs">
       <DependentUpon>BryanArchitecture.tt</DependentUpon>

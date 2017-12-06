@@ -32,15 +32,5 @@ namespace Bryan.Architecture.Service.Controllers
             var result = this._userBll.Login(dto);
             return this.Ok(result);
         }
-
-        /// <summary>The get user.</summary>
-        /// <param name="dto">The dto.</param>
-        /// <returns>The <see cref="IHttpActionResult"/>.</returns>
-        [HttpGet]
-        public IHttpActionResult GetUser([FromUri]GetUserDto dto)
-        {
-            var result = this._userBll.GetUser(dto);
-            return this.Ok(result);
-        }
     }
 }

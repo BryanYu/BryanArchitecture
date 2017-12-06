@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\User\AddUserDto.cs" />
     <Compile Include="Dto\User\GetUserDto.cs" />
     <Compile Include="Dto\User\LoginDto.cs" />
     <Compile Include="Dto\User\UpdateUserDto.cs" />

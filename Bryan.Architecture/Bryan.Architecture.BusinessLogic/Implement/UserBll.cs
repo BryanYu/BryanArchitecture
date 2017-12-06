@@ -73,5 +73,29 @@ namespace Bryan.Architecture.BusinessLogic.Implement
             this._userRepository.Update(user);
             return new ExecuteResult<object>();
         }
+
+        /// <summary>The add user.</summary>
+        /// <param name="dto">The dto.</param>
+        /// <returns>The <see cref="ExecuteResult{T}"/>.</returns>
+        public ExecuteResult<object> AddUser(AddUserDto dto)
+        {
+            var user = new User
+            {
+                Account = dto.Account,
+                Password = Md5.GetHash(dto.Password),
+                Phone = dto.Phone
+            };
+            this._userRepository.Insert(user);
+            return new ExecuteResult<object>();
+        }
+
+        /// <summary>The delete user.</summary>
+        /// <param name="id">The id.</param>
+        /// <returns>The <see cref="ExecuteResult{T}"/>.</returns>
+        public ExecuteResult<object> DeleteUser(int id)
+        {
+            this._userRepository.Delete(id);
+            return new ExecuteResult<object>();
+        }
     }
 }

@@ -39,6 +39,8 @@ namespace Bryan.Architecture.BusinessLogic.Interceptor
             {
                 this.CacheProcess(invocation, cacheAttribute.ExpiredSecond);
             }
+
+            invocation.Proceed();
         }
 
         /// <summary>The log.</summary>

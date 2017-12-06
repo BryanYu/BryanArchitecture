@@ -13,7 +13,22 @@ namespace Bryan.Architecture.BusinessLogic.Interface
 
         /// <summary>The get user.</summary>
         /// <param name="dto">The dto.</param>
-        /// <returns>The <see cref="ExecuteResult"/>.</returns>
+        /// <returns>The <see cref="ExecuteResult{T}"/>.</returns>
         ExecuteResult<UserDto> GetUser(GetUserDto dto);
+
+        /// <summary>The update user.</summary>
+        /// <param name="dto">The dto.</param>
+        /// <returns>The <see cref="ExecuteResult{T}"/>.</returns>
+        ExecuteResult<object> UpdateUser(UpdateUserDto dto);
+
+        /// <summary>The add user.</summary>
+        /// <param name="dto">The dto.</param>
+        /// <returns>The <see cref="ExecuteResult{T}"/>.</returns>
+        ExecuteResult<object> AddUser(AddUserDto dto);
+
+        /// <summary>The delete user.</summary>
+        /// <param name="id">The id.</param>
+        /// <returns>The <see cref="ExecuteResult{T}"/>.</returns>
+        ExecuteResult<object> DeleteUser(int id);
     }
 }
