@@ -63,7 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implement\UserBll.cs" />
-    <Compile Include="Interceptor\BllInterceptor.cs" />
     <Compile Include="Interface\IUserBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

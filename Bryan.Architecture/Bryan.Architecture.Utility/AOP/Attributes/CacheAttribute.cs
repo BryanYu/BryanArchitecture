@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bryan.Architecture.Utility.Attributes
+namespace Bryan.Architecture.Utility.AOP.Attributes
 {
     /// <summary>The cache attribute.</summary>
     public class CacheAttribute : Attribute

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Bryan.Architecture.Utility.Logger.Enum;
 
-namespace Bryan.Architecture.Utility.Attributes
+namespace Bryan.Architecture.Utility.AOP.Attributes
 {
     /// <summary>The log attribute.</summary>
     public class LogAttribute : Attribute

@@ -1,5 +1,5 @@
 ﻿using Autofac.Extras.DynamicProxy;
-using Bryan.Architecture.BusinessLogic.Interceptor;
+using Bryan.Architecture.AOP.Interceptor;
 using Bryan.Architecture.BusinessLogic.Interface;
 using Bryan.Architecture.BusinessLogic.Properties;
 using Bryan.Architecture.DataAccess;
@@ -7,14 +7,14 @@ using Bryan.Architecture.DataAccess.Base;
 using Bryan.Architecture.DomainModel.Base;
 using Bryan.Architecture.DomainModel.Base.Enum;
 using Bryan.Architecture.DomainModel.Dto.User;
-using Bryan.Architecture.Utility.Attributes;
+using Bryan.Architecture.Utility.AOP.Attributes;
 using Bryan.Architecture.Utility.Cryptography;
 using Bryan.Architecture.Utility.Logger.Enum;
 
 namespace Bryan.Architecture.BusinessLogic.Implement
 {
     /// <summary>The user bll.</summary>
-    [Intercept(typeof(BllInterceptor))]
+    [Intercept(typeof(Interceptor))]
     public class UserBll : IUserBll
     {
         /// <summary>The _user repository.</summary>

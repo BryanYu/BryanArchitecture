@@ -77,13 +77,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\CacheAttribute.cs" />
-    <Compile Include="Attributes\LogAttribute.cs" />
+    <Compile Include="AOP\Attributes\CacheAttribute.cs" />
+    <Compile Include="AOP\Attributes\LogAttribute.cs" />
+    <Compile Include="AOP\Interceptor\BllInterceptor.cs" />
     <Compile Include="Cache\Implement\DefaultCache.cs" />
     <Compile Include="Cache\Implement\RedisCache.cs" />
     <Compile Include="Cache\Interface\ICache.cs" />
     <Compile Include="Cryptography\JwtToken.cs" />
     <Compile Include="Cryptography\Md5.cs" />
+    <Compile Include="Email\Implement\GMailSender.cs" />
+    <Compile Include="Email\Interface\IEmailSender.cs" />
     <Compile Include="Logger\Enum\LoggerLevel.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,11 +94,13 @@
   <ItemGroup>
     <None Include="app.config" />
     <Content Include="NLog.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Email\Model\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

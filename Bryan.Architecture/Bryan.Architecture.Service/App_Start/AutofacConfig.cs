@@ -10,7 +10,8 @@ using Autofac;
 using Autofac.Core;
 using Autofac.Extras.DynamicProxy;
 using Autofac.Integration.WebApi;
-using Bryan.Architecture.BusinessLogic.Interceptor;
+
+using Bryan.Architecture.AOP.Interceptor;
 using Bryan.Architecture.Utility.Cache.Implement;
 using Bryan.Architecture.Utility.Cache.Interface;
 
@@ -55,7 +56,7 @@ namespace Bryan.Architecture.Service.App_Start
                                      new NamedParameter("password", redisPassword)
                                  };
             builder.RegisterType<RedisCache>().As<ICache>().WithParameters(parameters).InstancePerRequest();
-            builder.Register(c => new BllInterceptor(new RedisCache(0, redisHost, "6379", redisPassword))).SingleInstance();
+            builder.Register(c => new Interceptor(new RedisCache(0, redisHost, "6379", redisPassword))).SingleInstance();
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterWebApiFilterProvider(config);
 
