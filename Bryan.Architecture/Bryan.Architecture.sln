@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bryan.Architecture.Web", "Bryan.Architecture.Web\Bryan.Architecture.Web.csproj", "{FC7540A7-5F80-4D22-A20A-4EE4DAFC6779}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pesentation", "Pesentation", "{2831A970-1331-4EE2-A88F-E046647B244C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{1E188915-F18E-410F-B3D0-626EFFC369E3}"
